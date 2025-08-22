@@ -26,4 +26,3 @@ release:
   github:
     owner: luisjodiez
     name: net-logger
-    auto: true
