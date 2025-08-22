@@ -11,6 +11,9 @@ on:
     branches:
       - "*"
 
+permissions:
+  contents: write
+
 jobs:
   release:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
