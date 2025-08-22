@@ -19,14 +19,11 @@ jobs:
         with:
           go-version: 1.21
 
-      - name: Install GoReleaser
-        run: |
-          curl -sL https://install.goreleaser.com/github.sh | bash
-
-      - name: Run GoReleaser
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: goreleaser release --rm-dist
+      - name: GoReleaser release
+        uses: goreleaser/goreleaser-action@v6
+        with:
+          version: latest
+          args: release --clean
 
   build:
     name: Build Binaries
