@@ -23,4 +23,3 @@ A `report.md` file will be generated with a Markdown table of all probe results.
 ## Requirements
 
 - Go 1.21+
-- `ping` command available in PATH (for ICMP)
