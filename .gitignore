@@ -1,0 +1,25 @@
+# Binaries
+/netlogger
+
+# Reports
+report_*.md
+
+# IDE/editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Go build cache
+/bin/
+/pkg/
+
+# Test output
+*.out
+
+# Logs
+*.log
