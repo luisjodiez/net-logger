@@ -1,12 +1,19 @@
 name: Release
 
+env:
+  GO_VERSION: ${{ vars.GO_VERSION }}
+
 on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - "*"
 
 jobs:
   release:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     name: Release
     runs-on: ubuntu-latest
 
@@ -14,20 +21,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
+      - name: Set up Go
+        uses: actions/setup-go@v4
         with:
-          node-version: 18
+          go-version: ${{ env.GO_VERSION }}
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Semantic Release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx semantic-release
+      - name: GoReleaser release
+        uses: goreleaser/goreleaser-action@v6
+        with:
+          version: latest
+          args: release --clean
 
   build:
+    if: github.event_name == 'pull_request' || (github.event_name == 'push' && github.ref != 'refs/heads/main')
     name: Build Binaries
     runs-on: ubuntu-latest
 
@@ -49,7 +55,7 @@ jobs:
           GOOS=windows GOARCH=amd64 go build -o netlogger-windows.exe ./cmd/netlogger
 
       - name: Upload binaries
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: netlogger-binaries
           path: |
