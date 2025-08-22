@@ -69,22 +69,6 @@ jobs:
         with:
           name: netlogger-binaries
 
-  tag_release:
-    if: github.event_name == 'create' && github.event.ref_type == 'tag'
-    name: Release on Tag
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-
-      - name: Download binaries
-        uses: actions/download-artifact@v4
-        with:
-          name: netlogger-binaries
-
       - name: Publish Release
         uses: actions/create-release@v1
         env:
