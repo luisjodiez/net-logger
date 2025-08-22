@@ -14,18 +14,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
+      - name: Set up Go
+        uses: actions/setup-go@v4
         with:
-          node-version: 18
+          go-version: 1.21
 
-      - name: Install dependencies
-        run: npm install
+      - name: Install GoReleaser
+        run: |
+          curl -sL https://install.goreleaser.com/github.sh | bash
 
-      - name: Semantic Release
+      - name: Run GoReleaser
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx semantic-release
+        run: goreleaser release --rm-dist
 
   build:
     name: Build Binaries
