@@ -52,15 +52,13 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set up Go
-        uses: actions/setup-go@v4
-        with:
-          go-version: 1.21
-
-      - name: Run GoReleaser
-        uses: goreleaser/goreleaser-action@v6
-        with:
-          version: latest
-          args: release --clean
+      - name: Create Tag
+        id: tag
+        uses: anothrNick/github-tag-action@v1.47.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Download binaries
+        uses: actions/download-artifact@v4
+        with:
+          name: netlogger-binaries
