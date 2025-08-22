@@ -57,7 +57,7 @@ jobs:
 
       - name: Create Tag
         id: tag
-        uses: anothrNick/github-tag-action@v1.73.0
+        uses: anothrNick/github-tag-action@1.73.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
