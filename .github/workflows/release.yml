@@ -52,7 +52,7 @@ jobs:
           GOOS=windows GOARCH=amd64 go build -o netlogger-windows.exe ./cmd/netlogger
 
       - name: Upload binaries
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: netlogger-binaries
           path: |
