@@ -1,5 +1,8 @@
 # net-logger
 
+![Build Status](https://github.com/luisjodiez/net-logger/actions/workflows/release.yml/badge.svg)
+![License](https://img.shields.io/github/license/luisjodiez/net-logger)
+
 ## Table of Contents
 - [Net Logger CLI](#net-logger-cli)
 - [Usage](#usage)
@@ -10,10 +13,17 @@
   - [Build Steps](#build-steps)
 - [Runtime Requirements](#runtime-requirements)
 - [Build Dependencies](#build-dependencies)
+- [Features](#features)
+- [Contributing](#contributing)
 
 # Net Logger CLI
 
 A simple Go CLI tool to concurrently probe hosts (ICMP or TCP) and log results with timestamps. Generates a Markdown report on exit.
+
+## Features
+- Concurrently probe hosts using ICMP or TCP.
+- Generate Markdown reports with timestamps.
+- Flexible runtime options (duration or until a specific datetime).
 
 ## Usage
 
@@ -56,3 +66,9 @@ To manually build the `net-logger` application, follow these steps:
 
 ## Build Dependencies
 - **Go Modules**: The project uses Go modules to manage dependencies. Ensure you have internet access to fetch them during the build process.
+
+## Contributing
+We welcome contributions! To get started:
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Submit a pull request with a clear description of your changes.
